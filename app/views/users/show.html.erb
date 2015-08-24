@@ -1,0 +1,17 @@
+<h1> <%= current_user.username %> </h1>
+<h2>To Do List: </h2>
+
+<ul>
+<% current_user.goals.each do |goal| %>
+  <li>
+    <%= link_to goal.body, goal_url(goal) %> | <%= goal.status %> | <%= goal.completed %>
+    <form action="<%= goal_url(goal) %>" method="post">
+      <%= send_auth_token %>
+      <input type="hidden" name="_method" value="patch">
+      <input type="hidden" name="goal[completed]" value="true">
+      <button>Completed</button>
+    </form>
+    <%= button_to "Destroy Task", goal_url(goal), method: "delete" %>
+  </li>
+  <% end %>
+</ul>

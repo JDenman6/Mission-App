@@ -1,0 +1,37 @@
+<h1><%= @goal.body %></h1>
+
+
+
+<form action="<%= goal_url(@goal) %>" method="post">
+  <%= send_auth_token %>
+  <input type="hidden" name="_method" value="patch">
+
+  <label>Goal Body
+    <input type="string" name="goal[body]" value="<%= @goal.body %>">
+  </label>
+
+  <label>
+    Status
+    <label>Private
+      <input type="radio"
+      name="goal[status]"
+      value="Private"
+      <%= "checked" if @goal.status == "Private" %>
+      >
+    </label>
+
+    <label>Public
+      <input type="radio"
+      name="goal[status]"
+      value="Public"
+      <%= "checked" if @goal.status == "Public" %>
+      >
+    </label>
+  </label>
+
+  <br>
+  Task completed - <%= @goal.completed %>
+  <br>
+
+  <button>Submit</button>
+</form>

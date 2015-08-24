@@ -1,10 +1,10 @@
 class CreateGoals < ActiveRecord::Migration
   def change
     create_table :goals do |t|
-      t.string :body
-      t.string :status
-      t.boolean :completed
-      t.references :user_id, index: true, foreign_key: true
+      t.string :body, null: false
+      t.string :status, null: false
+      t.boolean :completed, null: false
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end

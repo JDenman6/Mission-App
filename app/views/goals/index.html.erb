@@ -1,0 +1,9 @@
+<h1>All Public Goals</h1>
+
+<ul>
+  <% all_public_goals.each do |goal| %>
+    <li><%= goal.body %>. Goal completed: <%= goal.completed %>. by: <%= goal.user.username %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Create Goal", new_goal_url %>
